@@ -4,10 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Join Skylark Servers</title>
-
-<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspete.github.io/Medotdev/BBA22EA1-962D-44D9-B632-3E823FF06445.png">
-<link rel="apple-touch-icon" href="https://endlesspete.github.io/Medotdev/BBA22EA1-962D-44D9-B632-3E823FF06445.png">
+<title>Find your Skylark Edition</title>
 
 <style>
 :root {
@@ -19,17 +16,19 @@
   --border: #d1d1d6;
   --accent: #007aff;
   --danger: #ff3b30;
+  --warning: #ff9500;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0b0b0d;
     --card: #1c1c1e;
-    --text: #f2f2f7;
-    --muted: #9a9aa1;
-    --border: #2a2a2c;
+    --text: #f5f5f7;
+    --muted: #a1a1aa;
+    --border: #2f3035;
     --accent: #6aa9ff;
     --danger: #ff6961;
+    --warning: #ffd60a;
   }
 }
 
@@ -39,155 +38,177 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
   background:
-    radial-gradient(circle at top, rgba(0,122,255,.12), transparent 40%),
+    radial-gradient(circle at top, rgba(0,122,255,.12), transparent 42%),
     var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 22px;
-}
-
-.container {
-  width: 100%;
-  max-width: 420px;
-}
-
-.hero {
-  text-align: center;
-  margin-bottom: 22px;
-}
-
-.hero-title {
-  font-size: 2.8rem;
-  font-weight: 800;
-  letter-spacing: -1.8px;
-  margin: 0;
-  background: linear-gradient(180deg, #ffffff, #9cc7ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@media (prefers-color-scheme: light) {
-  .hero-title {
-    background: linear-gradient(180deg, #007aff, #003e8a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
-
-.hero-subtitle {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: .98rem;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
 }
 
 .card {
+  width: 100%;
+  max-width: 430px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 34px;
-  padding: 28px 24px;
+  padding: 28px;
   box-shadow:
     0 1px 0 rgba(255,255,255,.35) inset,
-    0 16px 40px rgba(0,0,0,.12);
+    0 18px 45px rgba(0,0,0,.12);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 850;
+  letter-spacing: -1.2px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: .96rem;
+  line-height: 1.45;
+}
+
+.result {
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: 26px;
+  background: rgba(127,127,127,.08);
+  border: 1px solid var(--border);
   text-align: center;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 7px 14px;
-  border-radius: 999px;
-  background: rgba(0,122,255,.12);
-  color: var(--accent);
-  font-size: .8rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-
-.title {
-  font-size: 1.7rem;
+.label {
+  font-size: .72rem;
   font-weight: 800;
-  letter-spacing: -.8px;
-  line-height: 1.15;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.description {
-  margin-top: 16px;
+.edition {
+  margin-top: 10px;
+  font-size: 2rem;
+  font-weight: 850;
+  letter-spacing: -.7px;
+}
+
+.version,
+.support {
+  margin-top: 6px;
   color: var(--muted);
-  font-size: .96rem;
+}
+
+.primary-btn {
+  display: block;
+  width: 100%;
+  margin-top: 22px;
+  padding: 16px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.primary-btn.disabled {
+  opacity: .45;
+  pointer-events: none;
+}
+
+.notice {
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 20px;
+  font-size: .9rem;
+  line-height: 1.45;
+  font-weight: 650;
+}
+
+.notice a {
+  text-decoration: underline;
+}
+
+.warning {
+  background: rgba(255,59,48,.09);
+  border: 1px solid rgba(255,59,48,.25);
+  color: var(--danger);
+}
+
+.warning a {
+  color: var(--danger);
+}
+
+.beta {
+  background: rgba(255,149,0,.12);
+  border: 1px solid rgba(255,149,0,.28);
+  color: var(--warning);
+}
+
+.beta strong {
+  color: var(--warning);
+}
+
+.macos {
+  background: rgba(0,122,255,.1);
+  border: 1px solid rgba(0,122,255,.22);
+  color: var(--accent);
+}
+
+.join-wrap {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.join-btn,
+.back-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: .84rem;
+  font-weight: 700;
+}
+
+.nonserver {
+  margin-top: 22px;
+  text-align: center;
+}
+
+.nonserver a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: .92rem;
+  font-weight: 650;
+}
+
+.blocked-title {
+  font-size: 1.65rem;
+  font-weight: 850;
+}
+
+.blocked-text {
+  margin-top: 12px;
+  color: var(--muted);
   line-height: 1.55;
 }
 
-.disclaimer {
-  margin-top: 18px;
+.blocked-warning {
+  margin-top: 16px;
   color: var(--danger);
-  font-size: .9rem;
-  font-weight: 700;
+  font-weight: 750;
   line-height: 1.45;
-}
-
-.button {
-  display: block;
-  margin-top: 26px;
-  width: 100%;
-  border: none;
-  outline: none;
-  border-radius: 18px;
-  padding: 16px 18px;
-  background: var(--accent);
-  color: white;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: transform .18s ease, opacity .18s ease;
-}
-
-.button:active {
-  transform: scale(.97);
-}
-
-.secondary-button {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: rgba(0,122,255,.12);
-  color: var(--accent);
-  font-size: .86rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.recommended {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: .78rem;
-}
-
-.error {
-  margin-top: 18px;
-  color: var(--danger);
-  font-size: .95rem;
-  font-weight: 800;
-  line-height: 1.45;
-}
-
-.footer {
-  margin-top: 26px;
-  text-align: center;
-  font-size: .82rem;
-  color: var(--muted);
-  line-height: 1.8;
-}
-
-.footer a {
-  color: var(--accent);
-  text-decoration: none;
 }
 
 .hidden {
@@ -198,63 +219,91 @@ body {
 
 <body>
 
-<div class="container">
-  <div class="hero">
-    <h1 class="hero-title">Skylark Servers</h1>
-    <div class="hero-subtitle">Join Skylark services and stay updated</div>
+<main class="card" id="app">
+  <h1>Find your Skylark Edition</h1>
+
+  <div class="subtitle">
+    New to Skylark? This page checks your device and shows the official Skylark Edition made for your iOS or iPadOS version.
   </div>
 
-  <div class="card">
-    <div class="badge" id="badge">Checking Device</div>
+  <div class="notice macos hidden" id="macNotice">
+    Skylark is built for iPhone, iPad, and iPod touch. macOS may still run Skylark through the Shortcuts app, but compatibility can vary.
+  </div>
 
-    <div class="title" id="title">Join Skylark Servers</div>
+  <section class="result">
+    <div class="label">Recommended Edition</div>
+    <div class="edition" id="editionName">Checking…</div>
+    <div class="version" id="editionVersion"></div>
+    <div class="support" id="editionSupport"></div>
+  </section>
 
-    <div class="description" id="description">
-      Join Skylark Servers to use Skylark services and to easily get updates quick from your Shortcuts app without going to Twitter or anything.
-    </div>
+  <a class="primary-btn disabled" id="getEdition">
+    Checking…
+  </a>
 
-    <div class="disclaimer" id="disclaimer">
-      Disclaimer: once approved, you will be added. Please be patient while waiting for acceptance.
-    </div>
+  <div class="notice beta hidden" id="betaNotice">
+    <strong>Beta Notice:</strong> This Skylark Edition is currently in beta. Some features may change, improve, or behave differently while it is being tested.
+  </div>
 
-    <a
-      id="joinButton"
-      class="button"
-      href="https://www.dropbox.com/scl/fo/9zq7kpz5zmcmuzfo8emer/AHGwiNEKuz9ujyF8geSKkqo?dl=0"
-      target="_blank"
-    >
+  <div class="notice warning hidden" id="dropboxWarning">
+    Skylark Servers are required for the main Skylark Editions.
+    iOS 14 and iOS 15 users may not be able to join because Dropbox is ending support for older software.
+    Read <a href="https://skylark-inc.github.io/Support/Obsolete/">Skylark Obsolete</a>.
+  </div>
+
+  <div class="join-wrap">
+    <a class="join-btn" href="https://skylark-inc.github.io/Join/">
       Join Skylark Servers
     </a>
+  </div>
 
-    <a
-      id="dropboxButton"
-      class="secondary-button"
-      href="https://apps.apple.com/app/dropbox-cloud-files-storage/id327630330"
-      target="_blank"
-    >
-      Download the Dropbox App
+  <div class="nonserver">
+    <a href="https://skylark-inc.github.io/NonServer">
+      Don’t want to join Skylark Servers?
     </a>
-
-    <div class="recommended" id="recommended">
-      Recommended, not needed.
-    </div>
-
-    <div class="error" id="error"></div>
   </div>
 
-  <div class="footer">
-    <a href="https://x.com/Useskylark" target="_blank">@UseSkylark</a>
-    <br>
-    <a href="https://x.com/endlesspeteinc" target="_blank">@Endlesspeteinc</a>
+  <div class="join-wrap">
+    <a class="back-btn" href="https://skylark-inc.github.io">
+      Back to Skylark
+    </a>
   </div>
-</div>
+</main>
+
+<main class="card hidden" id="blocked">
+  <div class="blocked-title" id="blockedTitle">Unsupported Platform</div>
+
+  <div class="blocked-text" id="blockedText">
+    Skylark Edition Finder only supports iPhone, iPad, iPod touch, and limited macOS Shortcuts use.
+  </div>
+
+  <div class="blocked-warning" id="blockedWarning">
+    Windows, Android, Linux, and unsupported platforms cannot continue.
+  </div>
+
+  <div class="join-wrap">
+    <a class="back-btn" href="https://skylark-inc.github.io">
+      Back to Skylark
+    </a>
+  </div>
+</main>
 
 <script>
+const EDITIONS_JSON_URL = "https://skylark-inc.github.io/editions.json";
+
 const ua = navigator.userAgent;
 
-const isApple =
-  /iPhone|iPad|Macintosh/.test(ua) &&
-  !/Android/.test(ua);
+const isIOSDevice =
+  /iPhone|iPad|iPod/.test(ua) ||
+  (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+
+const isMacOS =
+  /Macintosh/.test(ua) &&
+  navigator.maxTouchPoints <= 1;
+
+const isUnsupportedPlatform =
+  /Android|Windows|Linux/.test(ua) &&
+  !/iPhone|iPad|iPod/.test(ua);
 
 let ios = null;
 
@@ -265,7 +314,7 @@ if (osMatch) {
   ios = parseFloat(`${osMatch[1]}.${osMatch[2]}`);
 }
 
-/* iOS 26+ Fix */
+/* iOS 26 detection helper */
 if (versionMatch) {
   const safariMajor = parseInt(versionMatch[1]);
   const safariMinor = parseInt(versionMatch[2]);
@@ -275,43 +324,249 @@ if (versionMatch) {
   }
 }
 
-const badge = document.getElementById("badge");
-const title = document.getElementById("title");
-const description = document.getElementById("description");
-const disclaimer = document.getElementById("disclaimer");
-const joinButton = document.getElementById("joinButton");
-const dropboxButton = document.getElementById("dropboxButton");
-const recommended = document.getElementById("recommended");
-const error = document.getElementById("error");
+function showBlocked(title, text, warning) {
+  document.getElementById("app").classList.add("hidden");
+  document.getElementById("blocked").classList.remove("hidden");
 
-function blockUser(message) {
-  badge.textContent = "Unsupported";
-  title.textContent = "Access Not Available";
-  description.classList.add("hidden");
-  disclaimer.classList.add("hidden");
-  joinButton.classList.add("hidden");
-  dropboxButton.classList.add("hidden");
-  recommended.classList.add("hidden");
-  error.textContent = message;
+  document.getElementById("blockedTitle").textContent = title;
+  document.getElementById("blockedText").textContent = text;
+  document.getElementById("blockedWarning").textContent = warning;
 }
 
-if (!isApple) {
-  blockUser("Sorry, but your platform is not supported.");
-  throw new Error("Unsupported platform");
+function setUnavailable(title, text) {
+  const editionName = document.getElementById("editionName");
+  const editionVersion = document.getElementById("editionVersion");
+  const editionSupport = document.getElementById("editionSupport");
+  const getEdition = document.getElementById("getEdition");
+
+  editionName.textContent = title;
+  editionVersion.textContent = "";
+  editionSupport.textContent = text;
+
+  getEdition.textContent = "Not Available";
+  getEdition.removeAttribute("href");
+  getEdition.classList.add("disabled");
 }
 
-if (!ios) {
-  blockUser("Sorry, your software version could not be detected.");
-  throw new Error("Unknown iOS version");
+function getValue(obj, keys) {
+  for (const key of keys) {
+    if (obj && obj[key] !== undefined && obj[key] !== null) {
+      return obj[key];
+    }
+  }
+
+  return null;
 }
 
-if (ios < 14.3) {
-  blockUser("Sorry, your software version is too old.");
-  throw new Error("iOS too old");
+function normalizeEditions(data) {
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  if (Array.isArray(data.editions)) {
+    return data.editions;
+  }
+
+  if (Array.isArray(data.skylarkEditions)) {
+    return data.skylarkEditions;
+  }
+
+  return [];
 }
 
-badge.textContent = "Supported";
-console.log("Detected iOS:", ios);
+function isSupportedEdition(edition) {
+  const status = String(
+    getValue(edition, ["status", "supportStatus", "supported"]) || ""
+  ).toLowerCase();
+
+  if (status.includes("unsupported")) return false;
+  if (status.includes("coming")) return false;
+  if (status.includes("disabled")) return false;
+
+  return true;
+}
+
+function isBetaEdition(edition) {
+  const beta = getValue(edition, ["beta", "isBeta", "Beta"]);
+
+  if (beta === true) return true;
+  if (String(beta).toLowerCase() === "true") return true;
+
+  return false;
+}
+
+function showDropboxWarningIfNeeded() {
+  if (ios >= 14.3 && ios <= 15.88) {
+    document.getElementById("dropboxWarning").classList.remove("hidden");
+  }
+}
+
+async function loadEditions() {
+  if (isUnsupportedPlatform) {
+    showBlocked(
+      "Unsupported Platform",
+      "Skylark Edition Finder is not available on Android, Windows, or Linux.",
+      "Sorry, but your platform is not supported."
+    );
+    return;
+  }
+
+  if (isIOSDevice && (!ios || ios < 14.3)) {
+    showBlocked(
+      "Software Too Old",
+      "Skylark requires iOS or iPadOS 14.3 or later.",
+      "Sorry, your software version is too old."
+    );
+    return;
+  }
+
+  if (!isIOSDevice && !isMacOS) {
+    showBlocked(
+      "Unsupported Platform",
+      "Skylark Edition Finder only supports iPhone, iPad, iPod touch, and limited macOS Shortcuts use.",
+      "Sorry, but your platform is not supported."
+    );
+    return;
+  }
+
+  if (isMacOS) {
+    document.getElementById("macNotice").classList.remove("hidden");
+  }
+
+  showDropboxWarningIfNeeded();
+
+  try {
+    const response = await fetch(EDITIONS_JSON_URL, {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not load editions.json");
+    }
+
+    const data = await response.json();
+    const editions = normalizeEditions(data);
+
+    let match = null;
+
+    if (isIOSDevice) {
+      match = editions.find(edition => {
+        const min = parseFloat(getValue(edition, [
+          "min",
+          "minimum",
+          "minIOS",
+          "minIos",
+          "minVersion",
+          "minimumIOS"
+        ]));
+
+        const max = parseFloat(getValue(edition, [
+          "max",
+          "maximum",
+          "maxIOS",
+          "maxIos",
+          "maxVersion",
+          "maximumIOS"
+        ]));
+
+        return (
+          isSupportedEdition(edition) &&
+          !isNaN(min) &&
+          !isNaN(max) &&
+          ios >= min &&
+          ios <= max
+        );
+      });
+    }
+
+    if (isMacOS) {
+      setUnavailable(
+        "Choose on iPhone or iPad",
+        "Skylark can run on macOS Shortcuts, but editions are made around iOS and iPadOS versions. Use your iPhone or iPad to find the best edition first."
+      );
+      return;
+    }
+
+    if (!match) {
+      setUnavailable(
+        "No Edition Available",
+        `Detected iOS/iPadOS ${ios}`
+      );
+      return;
+    }
+
+    const name = getValue(match, [
+      "name",
+      "edition",
+      "title"
+    ]) || "Skylark Edition";
+
+    const version = getValue(match, [
+      "version",
+      "build"
+    ]) || "";
+
+    const min = getValue(match, [
+      "min",
+      "minimum",
+      "minIOS",
+      "minIos",
+      "minVersion",
+      "minimumIOS"
+    ]);
+
+    const max = getValue(match, [
+      "max",
+      "maximum",
+      "maxIOS",
+      "maxIos",
+      "maxVersion",
+      "maximumIOS"
+    ]);
+
+    const url = getValue(match, [
+      "url",
+      "download",
+      "downloadURL",
+      "downloadUrl",
+      "link",
+      "shortcut"
+    ]);
+
+    document.getElementById("editionName").textContent = name;
+    document.getElementById("editionVersion").textContent = version;
+    document.getElementById("editionSupport").textContent =
+      `iOS/iPadOS ${min}–${max}`;
+
+    if (isBetaEdition(match)) {
+      document.getElementById("betaNotice").classList.remove("hidden");
+    }
+
+    const getEdition = document.getElementById("getEdition");
+
+    if (url) {
+      getEdition.href = url;
+      getEdition.textContent = `Get Skylark (${name})`;
+      getEdition.classList.remove("disabled");
+    } else {
+      getEdition.textContent = "Download Missing";
+      getEdition.classList.add("disabled");
+    }
+
+    console.log("Detected iOS/iPadOS:", ios);
+    console.log("Matched edition:", match);
+
+  } catch (error) {
+    console.error(error);
+
+    setUnavailable(
+      "Could Not Load Editions",
+      "editions.json could not be loaded. Please try again later."
+    );
+  }
+}
+
+loadEditions();
 </script>
 
 </body>
