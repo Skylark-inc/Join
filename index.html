@@ -1,35 +1,50 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Join Skylark Servers</title>
+<title>Request Skylark Server Access</title>
 
-<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspete.github.io/Medotdev/BBA22EA1-962D-44D9-B632-3E823FF06445.png">
-<link rel="apple-touch-icon" href="https://endlesspete.github.io/Medotdev/BBA22EA1-962D-44D9-B632-3E823FF06445.png">
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="https://endlesspete.github.io/Medotdev/BBA22EA1-962D-44D9-B632-3E823FF06445.png"
+>
+
+<link
+  rel="apple-touch-icon"
+  href="https://endlesspete.github.io/Medotdev/BBA22EA1-962D-44D9-B632-3E823FF06445.png"
+>
 
 <style>
 :root {
   color-scheme: light dark;
+
   --bg: #f5f5f7;
-  --card: #ffffff;
+  --card: rgba(255, 255, 255, .86);
   --text: #1c1c1e;
   --muted: #6e6e73;
-  --border: #d1d1d6;
+  --border: rgba(0, 0, 0, .08);
+
   --accent: #007aff;
   --danger: #ff3b30;
+  --warning: #ff9500;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b0b0d;
-    --card: #1c1c1e;
+    --bg: #09090b;
+    --card: rgba(28, 28, 30, .84);
     --text: #f2f2f7;
-    --muted: #9a9aa1;
-    --border: #2a2a2c;
+    --muted: #a1a1aa;
+    --border: rgba(255, 255, 255, .1);
+
     --accent: #6aa9ff;
     --danger: #ff6961;
+    --warning: #ffd60a;
   }
 }
 
@@ -39,149 +54,247 @@
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top, rgba(0,122,255,.12), transparent 40%),
-    var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+  min-height: 100vh;
+  padding: 22px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 22px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(0, 122, 255, .16),
+      transparent 42%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    system-ui,
+    sans-serif;
 }
 
 .container {
   width: 100%;
-  max-width: 420px;
+  max-width: 430px;
 }
 
 .hero {
-  text-align: center;
   margin-bottom: 22px;
+  text-align: center;
 }
 
 .hero-title {
-  font-size: 2.8rem;
-  font-weight: 800;
-  letter-spacing: -1.8px;
   margin: 0;
-  background: linear-gradient(180deg, #ffffff, #9cc7ff);
+
+  font-size: 2.8rem;
+  font-weight: 850;
+  letter-spacing: -1.8px;
+  line-height: .98;
+
+  background:
+    linear-gradient(
+      180deg,
+      #007aff,
+      #003e8a
+    );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-@media (prefers-color-scheme: light) {
-  .hero-title {
-    background: linear-gradient(180deg, #007aff, #003e8a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
-
 .hero-subtitle {
-  margin-top: 10px;
+  margin-top: 12px;
+
   color: var(--muted);
+
   font-size: .98rem;
+  line-height: 1.45;
 }
 
 .card {
+  padding: 28px 24px;
+
   background: var(--card);
+
   border: 1px solid var(--border);
   border-radius: 34px;
-  padding: 28px 24px;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.35) inset,
-    0 16px 40px rgba(0,0,0,.12);
+
   text-align: center;
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .35) inset,
+    0 18px 45px rgba(0, 0, 0, .16);
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 7px 14px;
-  border-radius: 999px;
-  background: rgba(0,122,255,.12);
-  color: var(--accent);
-  font-size: .8rem;
-  font-weight: 700;
+
   margin-bottom: 18px;
+  padding: 7px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(0, 122, 255, .13);
+  color: var(--accent);
+
+  font-size: .78rem;
+  font-weight: 800;
 }
 
 .title {
-  font-size: 1.7rem;
-  font-weight: 800;
+  font-size: 1.72rem;
+  font-weight: 850;
   letter-spacing: -.8px;
   line-height: 1.15;
 }
 
 .description {
   margin-top: 16px;
+
   color: var(--muted);
+
   font-size: .96rem;
   line-height: 1.55;
 }
 
-.disclaimer {
+.notice {
   margin-top: 18px;
+  padding: 15px;
+
+  border-radius: 18px;
+
+  font-size: .88rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.request-notice {
+  background: rgba(0, 122, 255, .09);
+  border: 1px solid rgba(0, 122, 255, .2);
+  color: var(--accent);
+}
+
+.warning-notice {
+  background: rgba(255, 149, 0, .11);
+  border: 1px solid rgba(255, 149, 0, .25);
+  color: var(--warning);
+}
+
+.eol-notice {
+  background: rgba(255, 59, 48, .09);
+  border: 1px solid rgba(255, 59, 48, .24);
   color: var(--danger);
-  font-size: .9rem;
-  font-weight: 700;
-  line-height: 1.45;
+}
+
+.notice a {
+  color: inherit;
+  font-weight: 750;
+  text-decoration: underline;
 }
 
 .button {
   display: block;
-  margin-top: 26px;
+
   width: 100%;
-  border: none;
-  outline: none;
-  border-radius: 18px;
+  margin-top: 24px;
   padding: 16px 18px;
+
+  border: none;
+  border-radius: 18px;
+
   background: var(--accent);
   color: white;
-  font-size: 1rem;
-  font-weight: 700;
+
+  text-align: center;
   text-decoration: none;
-  transition: transform .18s ease, opacity .18s ease;
+
+  font-size: 1rem;
+  font-weight: 750;
+
+  transition:
+    transform .18s ease,
+    opacity .18s ease;
 }
 
 .button:active {
   transform: scale(.97);
 }
 
+.button.disabled {
+  opacity: .45;
+  pointer-events: none;
+
+  background: #8e8e93;
+}
+
 .secondary-button {
   display: inline-block;
+
   margin-top: 14px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: rgba(0,122,255,.12);
+  padding: 10px 15px;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  background: rgba(127, 127, 127, .07);
   color: var(--accent);
-  font-size: .86rem;
+
+  font-size: .84rem;
   font-weight: 700;
+  text-decoration: none;
+}
+
+.text-link {
+  display: inline-block;
+
+  margin-top: 15px;
+
+  color: var(--accent);
+
+  font-size: .84rem;
+  font-weight: 650;
   text-decoration: none;
 }
 
 .recommended {
   margin-top: 8px;
+
   color: var(--muted);
+
   font-size: .78rem;
+  line-height: 1.45;
 }
 
 .error {
   margin-top: 18px;
+
   color: var(--danger);
-  font-size: .95rem;
-  font-weight: 800;
+
+  font-size: .92rem;
+  font-weight: 750;
   line-height: 1.45;
 }
 
 .footer {
   margin-top: 26px;
-  text-align: center;
-  font-size: .82rem;
+
   color: var(--muted);
+
+  text-align: center;
+
+  font-size: .82rem;
   line-height: 1.8;
 }
 
@@ -201,117 +314,543 @@ body {
 <div class="container">
   <div class="hero">
     <h1 class="hero-title">Skylark Servers</h1>
-    <div class="hero-subtitle">Join Skylark services and stay updated</div>
+
+    <div class="hero-subtitle">
+      Request access to Skylark services and shortcut updates.
+    </div>
   </div>
 
-  <div class="card">
-    <div class="badge" id="badge">Checking Device</div>
-
-    <div class="title" id="title">Join Skylark Servers</div>
-
-    <div class="description" id="description">
-      Join Skylark Servers to use Skylark services and to easily get updates quick from your Shortcuts app without going to Twitter or anything.
+  <main class="card">
+    <div class="badge" id="badge">
+      Checking Device
     </div>
 
-    <div class="disclaimer" id="disclaimer">
-      Disclaimer: once approved, you will be added. Please be patient while waiting for acceptance.
+    <div class="title" id="title">
+      Preparing your request...
+    </div>
+
+    <div class="description" id="description">
+      Skylark Servers connect supported editions to Skylark services
+      and make updates available directly through the Shortcuts app,
+      without requiring you to check social media.
+    </div>
+
+    <div
+      class="notice request-notice hidden"
+      id="requestNotice"
+    >
+      Access is reviewed before it is added. After sending your request,
+      allow time for it to be processed.
+    </div>
+
+    <div
+      class="notice warning-notice hidden"
+      id="ios15Notice"
+    >
+      Dropbox support is limited on iOS 15. You may still submit a request,
+      but access or syncing may not work as expected on older software.
+    </div>
+
+    <div
+      class="notice eol-notice hidden"
+      id="eolNotice"
+    >
+      This Skylark edition has reached End of Life and can no longer use
+      Skylark Servers. Some features and services may no longer function.
     </div>
 
     <a
-      id="joinButton"
-      class="button"
+      id="requestButton"
+      class="button disabled"
       href="https://www.dropbox.com/scl/fo/9zq7kpz5zmcmuzfo8emer/AHGwiNEKuz9ujyF8geSKkqo?dl=0"
       target="_blank"
+      rel="noopener noreferrer"
     >
-      Join Skylark Servers
+      Checking
+    </a>
+
+    <a
+      id="nonServerButton"
+      class="button hidden"
+      href="https://skylark-inc.github.io/NonServer/"
+    >
+      Use Skylark Without Servers
     </a>
 
     <a
       id="dropboxButton"
-      class="secondary-button"
+      class="secondary-button hidden"
       href="https://apps.apple.com/app/dropbox-cloud-files-storage/id327630330"
       target="_blank"
+      rel="noopener noreferrer"
     >
-      Download the Dropbox App
+      Download Dropbox
     </a>
 
-    <div class="recommended" id="recommended">
-      Recommended, not needed.
+    <div
+      class="recommended hidden"
+      id="dropboxRecommended"
+    >
+      Recommended for server access, but not required to submit a request.
     </div>
 
+    <a
+      id="obsoleteLink"
+      class="text-link hidden"
+      href="https://skylark-inc.github.io/Support/Obsolete/"
+    >
+      Learn about Skylark Obsolete
+    </a>
+
     <div class="error" id="error"></div>
-  </div>
+
+    <a
+      class="secondary-button"
+      href="https://skylark-inc.github.io"
+    >
+      Back to Skylark
+    </a>
+  </main>
 
   <div class="footer">
-    <a href="https://x.com/Useskylark" target="_blank">@UseSkylark</a>
+    <a
+      href="https://x.com/Useskylark"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      @UseSkylark
+    </a>
+
     <br>
-    <a href="https://x.com/endlesspeteinc" target="_blank">@Endlesspeteinc</a>
+
+    <a
+      href="https://x.com/endlesspeteinc"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      @Endlesspeteinc
+    </a>
   </div>
 </div>
 
 <script>
+const EDITIONS_URL = "/editions.json";
+
+const REQUEST_URL =
+  "https://www.dropbox.com/scl/fo/9zq7kpz5zmcmuzfo8emer/AHGwiNEKuz9ujyF8geSKkqo?dl=0";
+
 const ua = navigator.userAgent;
 
-const isApple =
-  /iPhone|iPad|Macintosh/.test(ua) &&
-  !/Android/.test(ua);
+const isIOSDevice =
+  /iPhone|iPad|iPod/.test(ua) ||
+  (
+    /Macintosh/.test(ua) &&
+    navigator.maxTouchPoints > 1
+  );
 
-let ios = null;
+const isMacOS =
+  /Macintosh/.test(ua) &&
+  navigator.maxTouchPoints <= 1;
 
-const osMatch = ua.match(/OS (\d+)[._](\d+)/);
-const versionMatch = ua.match(/Version\/(\d+)\.(\d+)/);
+const isUnsupportedPlatform =
+  /Android|Windows|Linux/.test(ua) &&
+  !/iPhone|iPad|iPod/.test(ua);
+
+let iosVersion = null;
+
+const osMatch =
+  ua.match(/OS (\d+)[._](\d+)(?:[._](\d+))?/);
+
+const safariMatch =
+  ua.match(/Version\/(\d+)\.(\d+)(?:\.(\d+))?/);
 
 if (osMatch) {
-  ios = parseFloat(`${osMatch[1]}.${osMatch[2]}`);
+  iosVersion = {
+    major: Number(osMatch[1]),
+    minor: Number(osMatch[2]),
+    patch: Number(osMatch[3] || 0),
+    text:
+      `${osMatch[1]}.${osMatch[2]}` +
+      `${osMatch[3] ? "." + osMatch[3] : ""}`
+  };
 }
 
-/* iOS 26+ Fix */
-if (versionMatch) {
-  const safariMajor = parseInt(versionMatch[1]);
-  const safariMinor = parseInt(versionMatch[2]);
+/* iOS 26+ Safari detection helper */
+if (safariMatch && iosVersion) {
+  const safariMajor = Number(safariMatch[1]);
+  const safariMinor = Number(safariMatch[2]);
+  const safariPatch = Number(safariMatch[3] || 0);
 
-  if (safariMajor >= 26 && ios && ios <= 18.7) {
-    ios = parseFloat(`${safariMajor}.${safariMinor}`);
+  if (
+    safariMajor >= 26 &&
+    iosVersion.major <= 18
+  ) {
+    iosVersion = {
+      major: safariMajor,
+      minor: safariMinor,
+      patch: safariPatch,
+      text:
+        `${safariMajor}.${safariMinor}` +
+        `${safariMatch[3] ? "." + safariPatch : ""}`
+    };
   }
 }
 
-const badge = document.getElementById("badge");
-const title = document.getElementById("title");
-const description = document.getElementById("description");
-const disclaimer = document.getElementById("disclaimer");
-const joinButton = document.getElementById("joinButton");
-const dropboxButton = document.getElementById("dropboxButton");
-const recommended = document.getElementById("recommended");
-const error = document.getElementById("error");
+const badge =
+  document.getElementById("badge");
 
-function blockUser(message) {
-  badge.textContent = "Unsupported";
-  title.textContent = "Access Not Available";
-  description.classList.add("hidden");
-  disclaimer.classList.add("hidden");
-  joinButton.classList.add("hidden");
+const title =
+  document.getElementById("title");
+
+const description =
+  document.getElementById("description");
+
+const requestNotice =
+  document.getElementById("requestNotice");
+
+const ios15Notice =
+  document.getElementById("ios15Notice");
+
+const eolNotice =
+  document.getElementById("eolNotice");
+
+const requestButton =
+  document.getElementById("requestButton");
+
+const nonServerButton =
+  document.getElementById("nonServerButton");
+
+const dropboxButton =
+  document.getElementById("dropboxButton");
+
+const dropboxRecommended =
+  document.getElementById("dropboxRecommended");
+
+const obsoleteLink =
+  document.getElementById("obsoleteLink");
+
+const error =
+  document.getElementById("error");
+
+function versionToParts(value) {
+  const text = String(value || "")
+    .replace(/iOS|iPadOS/gi, "")
+    .trim();
+
+  const parts = text.split(".");
+
+  return {
+    major: Number(parts[0] || 0),
+    minor: Number(parts[1] || 0),
+    patch: Number(parts[2] || 0)
+  };
+}
+
+function compareVersions(a, b) {
+  if (a.major !== b.major) {
+    return a.major - b.major;
+  }
+
+  if (a.minor !== b.minor) {
+    return a.minor - b.minor;
+  }
+
+  return a.patch - b.patch;
+}
+
+function getValue(item, keys) {
+  for (const key of keys) {
+    if (
+      item &&
+      item[key] !== undefined &&
+      item[key] !== null
+    ) {
+      return item[key];
+    }
+  }
+
+  return "";
+}
+
+function getBoolean(item, keys, fallback = false) {
+  const value = getValue(item, keys);
+
+  if (value === true) return true;
+  if (value === false) return false;
+
+  if (String(value).toLowerCase() === "true") {
+    return true;
+  }
+
+  if (String(value).toLowerCase() === "false") {
+    return false;
+  }
+
+  return fallback;
+}
+
+function normalizeEditions(data) {
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  if (Array.isArray(data.editions)) {
+    return data.editions;
+  }
+
+  if (Array.isArray(data.skylarkEditions)) {
+    return data.skylarkEditions;
+  }
+
+  return [];
+}
+
+function getMinVersion(item) {
+  return versionToParts(
+    getValue(item, [
+      "min",
+      "minimum",
+      "minIOS",
+      "minIos",
+      "minVersion",
+      "minimumIOS"
+    ])
+  );
+}
+
+function getMaxVersion(item) {
+  return versionToParts(
+    getValue(item, [
+      "max",
+      "maximum",
+      "maxIOS",
+      "maxIos",
+      "maxVersion",
+      "maximumIOS"
+    ])
+  );
+}
+
+function isEOL(item) {
+  return getBoolean(
+    item,
+    ["eol", "EOL", "isEOL"],
+    false
+  );
+}
+
+function editionMatchesDevice(item) {
+  const min = getMinVersion(item);
+  const max = getMaxVersion(item);
+
+  const withinConfirmedRange =
+    compareVersions(iosVersion, min) >= 0 &&
+    compareVersions(iosVersion, max) <= 0;
+
+  const newerSameMajor =
+    iosVersion.major === max.major &&
+    compareVersions(iosVersion, max) > 0;
+
+  return withinConfirmedRange || newerSameMajor;
+}
+
+function hideAllActions() {
+  requestButton.classList.add("hidden");
+  nonServerButton.classList.add("hidden");
   dropboxButton.classList.add("hidden");
-  recommended.classList.add("hidden");
-  error.textContent = message;
+  dropboxRecommended.classList.add("hidden");
+  obsoleteLink.classList.add("hidden");
+
+  requestNotice.classList.add("hidden");
+  ios15Notice.classList.add("hidden");
+  eolNotice.classList.add("hidden");
 }
 
-if (!isApple) {
-  blockUser("Sorry, but your platform is not supported.");
-  throw new Error("Unsupported platform");
+function showUnsupported(
+  status,
+  heading,
+  message,
+  problem
+) {
+  hideAllActions();
+
+  badge.textContent = status;
+  title.textContent = heading;
+  description.textContent = message;
+  error.textContent = problem;
 }
 
-if (!ios) {
-  blockUser("Sorry, your software version could not be detected.");
-  throw new Error("Unknown iOS version");
+function showEOL() {
+  hideAllActions();
+
+  badge.textContent = "End of Life";
+  title.textContent = "Skylark Servers are unavailable";
+  description.textContent =
+    "Your Skylark edition is no longer supported by Skylark Servers.";
+
+  eolNotice.classList.remove("hidden");
+  nonServerButton.classList.remove("hidden");
+  obsoleteLink.classList.remove("hidden");
+
+  error.textContent = "";
 }
 
-if (ios < 14.3) {
-  blockUser("Sorry, your software version is too old.");
-  throw new Error("iOS too old");
+function showRequestAccess() {
+  badge.textContent = "Available";
+  title.textContent = "Request Skylark Server Access";
+
+  description.textContent =
+    "Skylark Servers connect supported editions to Skylark services " +
+    "and make updates available directly through the Shortcuts app.";
+
+  requestNotice.classList.remove("hidden");
+
+  requestButton.textContent = "Request Access";
+  requestButton.href = REQUEST_URL;
+  requestButton.classList.remove("disabled");
+  requestButton.classList.remove("hidden");
+
+  dropboxButton.classList.remove("hidden");
+  dropboxRecommended.classList.remove("hidden");
+
+  if (iosVersion.major === 15) {
+    ios15Notice.classList.remove("hidden");
+  }
+
+  error.textContent = "";
 }
 
-badge.textContent = "Supported";
-console.log("Detected iOS:", ios);
+async function start() {
+  hideAllActions();
+
+  if (isUnsupportedPlatform) {
+    showUnsupported(
+      "Unsupported Platform",
+      "Skylark Servers are not available",
+      "Skylark Servers require a supported iPhone, iPad, or iPod touch.",
+      "Android, Windows, and Linux are not supported."
+    );
+    return;
+  }
+
+  if (isMacOS) {
+    showUnsupported(
+      "macOS Not Supported",
+      "Server access must be requested from iOS or iPadOS",
+      "Skylark may run through Shortcuts on Mac, but Skylark Server access is not supported on macOS.",
+      "Open this page on a supported iPhone, iPad, or iPod touch."
+    );
+    return;
+  }
+
+  if (!isIOSDevice) {
+    showUnsupported(
+      "Unsupported Platform",
+      "Skylark Servers are not available",
+      "Skylark Servers require a supported iPhone, iPad, or iPod touch.",
+      "This platform is not supported."
+    );
+    return;
+  }
+
+  if (!iosVersion) {
+    showUnsupported(
+      "Version Not Detected",
+      "Your software version could not be read",
+      "Open this page in Safari on your iPhone, iPad, or iPod touch.",
+      "Unable to identify your iOS or iPadOS version."
+    );
+    return;
+  }
+
+  if (
+    compareVersions(
+      iosVersion,
+      {
+        major: 14,
+        minor: 3,
+        patch: 0
+      }
+    ) < 0
+  ) {
+    showUnsupported(
+      "Software Too Old",
+      "Skylark Servers are unavailable",
+      `Detected iOS/iPadOS ${iosVersion.text}.`,
+      "Skylark requires iOS or iPadOS 14.3 or later."
+    );
+    return;
+  }
+
+  let data;
+
+  try {
+    const response = await fetch(
+      EDITIONS_URL,
+      {
+        cache: "no-store"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        "Unable to load editions.json"
+      );
+    }
+
+    data = await response.json();
+  } catch (fetchError) {
+    showUnsupported(
+      "Service Check Unavailable",
+      "Skylark could not verify your edition",
+      "Edition information could not be loaded right now.",
+      "Please try again later."
+    );
+
+    console.error(fetchError);
+    return;
+  }
+
+  const editions = normalizeEditions(data);
+
+  const matchedEdition =
+    editions.find(editionMatchesDevice);
+
+  if (!matchedEdition) {
+    showUnsupported(
+      "Edition Not Found",
+      "No matching Skylark edition was found",
+      `Detected iOS/iPadOS ${iosVersion.text}.`,
+      "Skylark Server access cannot be requested for this software version."
+    );
+    return;
+  }
+
+  /*
+    EOL has the highest priority.
+    It overrides beta, alerts, links,
+    and all other edition states.
+  */
+  if (isEOL(matchedEdition)) {
+    showEOL();
+    return;
+  }
+
+  showRequestAccess();
+
+  console.log(
+    "Detected iOS/iPadOS:",
+    iosVersion.text
+  );
+
+  console.log(
+    "Matched edition:",
+    matchedEdition
+  );
+}
+
+start();
 </script>
 
 </body>
+</html>
